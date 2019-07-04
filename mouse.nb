@@ -1,0 +1,134 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4223,        124]
+NotebookOptionsPosition[      3924,        111]
+NotebookOutlinePosition[      4270,        126]
+CellTagsIndexPosition[      4227,        123]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"arduino", " ", "=", " ", 
+    RowBox[{"DeviceOpen", "[", 
+     RowBox[{"\"\<Arduino\>\"", ",", " ", "\"\<COM6\>\""}], "]"}]}], ";", " ", 
+   RowBox[{"(*", 
+    RowBox[{"Opening", " ", "the", " ", "Arduino", " ", "Uno"}], "*)"}], "\n", 
+   RowBox[{"temp", " ", "=", " ", 
+    RowBox[{"PrintTemporary", "[", "\"\<Arduino Connected\>\"", "]"}]}], 
+   ";"}], " "}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Needs", "[", "\"\<JLink`\>\"", "]"}], ";"}], "          "}], "\n", 
+ RowBox[{
+  RowBox[{"NotebookDelete", "[", "temp", "]"}], ";", " ", 
+  RowBox[{"temp", " ", "=", " ", 
+   RowBox[{"PrintTemporary", "[", "\"\<JavaLink established\>\"", "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ReinstallJava", "[", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"robot", " ", "=", " ", 
+   RowBox[{"JavaNew", "[", "\"\<java.awt.Robot\>\"", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"NotebookDelete", "[", "temp", "]"}], ";", " ", 
+  RowBox[{"temp", " ", "=", " ", 
+   RowBox[{"PrintTemporary", "[", "\"\<Robot produced\>\"", "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"NotebookDelete", "[", "temp", "]"}], ";", " ", 
+  RowBox[{"temp", " ", "=", " ", 
+   RowBox[{
+   "PrintTemporary", "[", "\"\<Mouse running. Press Alt + . to abort.\>\"", 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"speed", " ", "=", " ", "10"}], ";", " ", 
+  RowBox[{"(*", 
+   RowBox[{"The", " ", "speed", " ", "of", " ", "the", " ", "mouse"}], "*)"}],
+   "\n", 
+  RowBox[{"While", "[", 
+   RowBox[{"True", ",", " ", 
+    RowBox[{
+     RowBox[{"pos", " ", "=", " ", 
+      RowBox[{"Round", "/@", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"MousePosition", "[", "\"\<ScreenScaled\>\"", "]"}], "*", 
+         RowBox[{"{", 
+          RowBox[{"1920", ",", " ", "1080"}], "}"}]}], ")"}]}]}], ";", " ", 
+     RowBox[{"(*", 
+      RowBox[{
+      "Reads", " ", "mouse", " ", "coordinates", " ", "relative", " ", "to", 
+       " ", "entire", " ", "screen"}], "*)"}], "\n", 
+     RowBox[{"robot", "@", 
+      RowBox[{"mouseMove", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"pos", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "+", 
+         RowBox[{"Round", "[", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"QuantityMagnitude", "[", 
+              RowBox[{"DeviceRead", "[", 
+               RowBox[{"arduino", ",", " ", "\"\<A0\>\""}], "]"}], "]"}], " ",
+              "-", " ", "2.5", " ", "-", " ", "0.1"}], ")"}], "*", "speed"}], 
+          "]"}]}], ",", 
+        RowBox[{
+         RowBox[{"pos", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "+", 
+         RowBox[{"Round", "[", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"QuantityMagnitude", "[", 
+              RowBox[{"DeviceRead", "[", 
+               RowBox[{"arduino", ",", " ", "\"\<A1\>\""}], "]"}], "]"}], " ",
+              "-", " ", "2.5", " ", "-", " ", "0.1"}], ")"}], "*", "speed"}], 
+          "]"}]}]}], "]"}]}]}]}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Need", " ", "to", " ", "add", " ", "error", " ", "component", " ", "to", 
+    " ", "stop", " ", 
+    RowBox[{"it", " ", "'"}], 
+    RowBox[{"sagging", "'"}], " ", "downwards", " ", "on", " ", "the", " ", 
+    "screen"}], "*)"}]}]}], "Input",ExpressionUUID->"2d5b96e1-5c28-498a-86f0-\
+a4e0f448f980"]
+},
+WindowSize->{1520, 781},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3362, 89, 238, "Input",ExpressionUUID->"2d5b96e1-5c28-498a-86f0-a4e0f448f980"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
